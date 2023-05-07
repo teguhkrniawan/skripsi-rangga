@@ -1,0 +1,17 @@
+[
+    {
+        "id_indikator" : 1,
+        "nama_dokumen" : "DOKUMEN PENDUKUNG INFRASTRUKTUR",
+        "deskripsi" : "Ini adalah deskripsi",
+        "dokumen_pendukung" : [
+            {
+                "id_dokumen" : 1,
+                "nama_dokumen" : "eviden a"
+            },
+            {
+                "id_dokumen" : 2,
+                "nama_dokumen" : "eviden b"
+            },
+        ]
+    }
+]
