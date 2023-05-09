@@ -38,6 +38,20 @@ export const userColumns = [
   },
 ];
 
+export const opdColumns = [
+  // { field: "id", headerName: "ID", width: 70 },
+  {
+    field: "nama_opd",
+    headerName: "NAMA OPD",
+    width: 200
+  },
+  {
+    field: "singkatan_opd",
+    headerName: "SINGKATAN OPD",
+    width: 200
+  }
+]
+
 //temporary data
 export const userRows = [
   {

@@ -17,6 +17,19 @@ import { useContext } from "react";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+
+  const handleLogout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem("user");
+    window.location.href = '/';
+  }
+
+  // Mengambil data dari local storage
+  const user = JSON.parse(localStorage.getItem('user'))
+
+  // Mengambil nilai dari properti roles
+  const roles = user.roles
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -33,64 +46,70 @@ const Sidebar = () => {
             <span>BERANDA</span>
           </li>
 
-          {/* role admin */}
-          {/* <p className="title">Master Page</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
-            <li>
-              <PersonOutlineIcon className="icon" />
-              <span>MASTER OPD</span>
-            </li>
-          </Link>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>MASTER PIC</span>
-          </li>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <li>
-              <StoreIcon className="icon" />
-              <span>MASTER INDIKATOR</span>
-            </li>
-          </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>MASTER DOKUMEN</span>
-          </li>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>SETTINGS</span>
-          </li>
+          {roles == 'user' ? (
+            <>
+              <p className="title">Layanan Kami</p>
+              <li>
+                <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                <span>EVIDEN SPBE</span>
+              </li>
+              <li>
+                <PsychologyOutlinedIcon className="icon" />
+                <span>MANUAL BOOK</span>
+              </li>
+              <li>
+                <SettingsApplicationsIcon className="icon" />
+                <span>HELP DESK</span>
+              </li>
+            </>
+          ) : (
+            <>
+              <p className="title">Master Page</p>
+              <Link to="/opd" style={{ textDecoration: "none" }}>
+                <li>
+                  <PersonOutlineIcon className="icon" />
+                  <span>MASTER OPD</span>
+                </li>
+              </Link>
+              <Link to="/pic" style={{ textDecoration: "none" }}>
+                <li>
+                  <LocalShippingIcon className="icon" />
+                  <span>MASTER PIC</span>
+                </li>
+              </Link>
+              <Link to="/indikator" style={{ textDecoration: "none" }}>
+                <li>
+                  <StoreIcon className="icon" />
+                  <span>MASTER INDIKATOR</span>
+                </li>
+              </Link>
+              <li>
+                <CreditCardIcon className="icon" />
+                <span>MASTER DOKUMEN</span>
+              </li>
+              <li>
+                <LocalShippingIcon className="icon" />
+                <span>SETTINGS</span>
+              </li>
 
-          <p className="title">Report</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>LAPORAN SPBE</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>STATISTIK SPBE</span>
-          </li> */}
-
-          {/* role opd */}
-          <p className="title">Service</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>EVIDEN SPBE</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>MANUAL BOOK</span>
-          </li>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>HELP DESK</span>
-          </li>
+              <p className="title">Report</p>
+              <li>
+                <InsertChartIcon className="icon" />
+                <span>LAPORAN SPBE</span>
+              </li>
+              <li>
+                <NotificationsNoneIcon className="icon" />
+                <span>STATISTIK SPBE</span>
+              </li>
+            </>
+          )}
 
           <p className="title">User</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>PROFILE</span>
           </li>
-          <li>
+          <li onClick={handleLogout}>
             <ExitToAppIcon className="icon" />
             <span>LOGOUT</span>
           </li>
