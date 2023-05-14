@@ -12,6 +12,7 @@ import HomeOpd from "./pages/home/HomeOpd";
 import MasterOpd from "./pages/master-opd/masteropd";
 import MasterPic from "./pages/master-pic/masterpic";
 import MasterIndicator from "./pages/master-indikator/masterindicator";
+import MasterDokumen from "./pages/master-dokumen/masterdokumen";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -42,6 +43,11 @@ function App() {
             {/* indikator */}
             <Route path="/indikator">
               <Route index element={<MasterIndicator />} />
+            </Route>
+
+            {/* dokumen */}
+            <Route path="/dokumen">
+              <Route index element={<MasterDokumen />} />
             </Route>
 
             {/* /users */}

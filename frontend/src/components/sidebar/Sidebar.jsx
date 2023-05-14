@@ -83,10 +83,12 @@ const Sidebar = () => {
                   <span>MASTER INDIKATOR</span>
                 </li>
               </Link>
-              <li>
-                <CreditCardIcon className="icon" />
-                <span>MASTER DOKUMEN</span>
-              </li>
+              <Link to="/dokumen" style={{ textDecoration: "none" }}>
+                <li>
+                  <CreditCardIcon className="icon" />
+                  <span>MASTER DOKUMEN</span>
+                </li>
+              </Link>
               <li>
                 <LocalShippingIcon className="icon" />
                 <span>SETTINGS</span>

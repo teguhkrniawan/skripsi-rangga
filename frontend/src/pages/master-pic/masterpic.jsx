@@ -98,6 +98,7 @@ const MasterPic = () => {
                 <Datatable
                     kolom={opdColumns}
                     baris={data}
+                    judul={"Master PIC"}
                 />
             </div>
         </div>

@@ -9,7 +9,7 @@ import Swal from "sweetalert2"
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom"
 
-const MasterOpd = () => {
+const MasterDokumen = () => {
 
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -20,14 +20,14 @@ const MasterOpd = () => {
       width: 20
     },
     {
-      field: "singkatan_opd",
-      headerName: "SINGKATAN OPD",
+      field: "nama_dokumen",
+      headerName: "NAMA DOKUMEN",
       width: 200
     },
     {
-      field: "nama_opd",
-      headerName: "NAMA OPD",
-      flex: 1
+      field: "nama_indikator",
+      headerName: "NAMA INDIKATOR",
+      flex: 200
     },
     {
       field: "action",
@@ -37,7 +37,7 @@ const MasterOpd = () => {
         return (
           <>
             <div className="cellAction">
-              <Link to={`/opd/edit?id=${params.row.id_opd}`} style={{ textDecoration: "none" }}>
+              <Link to={`/dokumen/edit?=${params.row.id_dokumen}`} style={{ textDecoration: "none" }}>
                 <div className="viewButton">Edit</div>
               </Link>
               <div
@@ -53,14 +53,9 @@ const MasterOpd = () => {
     },
   ];
 
-
-  const actionColumn = [
-    
-  ];
-
   const getData = async () => {
     try {
-      axios.get(`http://localhost:8081/opd`).then(response => {
+      axios.get(`http://localhost:8081/dokumen`).then(response => {
         const data = response.data.data.map((item, index) => ({ ...item, id: index + 1 }))
         setData(data)
         setIsLoading(false)
@@ -86,14 +81,14 @@ const MasterOpd = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable
+        <Datatable 
           kolom={opdColumns}
           baris={data}
-          judul={"Master OPD"}
+          judul="Master Dokumen"
         />
       </div>
     </div>
   )
 }
 
-export default MasterOpd
+export default MasterDokumen

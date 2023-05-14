@@ -89,6 +89,7 @@ const MasterIndicator = () => {
         <Datatable 
           kolom={opdColumns}
           baris={data}
+          judul="Master Indikator"
         />
       </div>
     </div>

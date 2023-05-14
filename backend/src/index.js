@@ -7,6 +7,7 @@ const usersRoutes = require('./routes/users');
 const opdRoutes = require('./routes/opd');
 const indikatorRoutes = require('./routes/indikator');
 const autentikasiRoutes = require('./routes/autentikasi');
+const dokumenRoutes = require('./routes/dokumen');
 
 const middlewareLogRequest = require('./middleware/logs');
 const upload = require('./middleware/multer');
@@ -22,6 +23,7 @@ app.use('/users', usersRoutes);
 app.use('/opd', opdRoutes);
 app.use('/indikator', indikatorRoutes);
 app.use('/autentikasi', autentikasiRoutes);
+app.use('/dokumen', dokumenRoutes);
 
 
 

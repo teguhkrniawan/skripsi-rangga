@@ -4,12 +4,12 @@ import { opdColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const Datatable = ({kolom, baris}) => {
+const Datatable = ({kolom, baris, judul = "NO TITLE"}) => {
 
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Master OPD
+        {judul}
         <Link to="/users/new" className="link">
           Tambah OPD
         </Link>
