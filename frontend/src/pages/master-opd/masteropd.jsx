@@ -13,6 +13,31 @@ const MasterOpd = () => {
 
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  
+    /**
+    * Handle when delete button click
+    */
+    const handleDelete = (id_opd) => {
+      Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: "Data yang dihapus tidak bisa dikembalikan lagi!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Tentu',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+    };
+
   const opdColumns = [
     {
       field: "id",
@@ -42,7 +67,7 @@ const MasterOpd = () => {
               </Link>
               <div
                 className="deleteButton"
-                // onClick={() => handleDelete(params.row._id)}
+                onClick={() => handleDelete(params.row.id_opd)}
               >
                 Delete
               </div>
@@ -53,10 +78,6 @@ const MasterOpd = () => {
     },
   ];
 
-
-  const actionColumn = [
-    
-  ];
 
   const getData = async () => {
     try {
@@ -86,6 +107,12 @@ const MasterOpd = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
+        <div className="datatableTitle">
+          Master Opd
+          <Link to="/opd/add-item" className="link">
+            Tambah OPD
+          </Link>
+        </div>
         <Datatable
           kolom={opdColumns}
           baris={data}

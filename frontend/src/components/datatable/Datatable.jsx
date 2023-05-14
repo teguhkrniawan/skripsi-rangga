@@ -8,12 +8,6 @@ const Datatable = ({kolom, baris, judul = "NO TITLE"}) => {
 
   return (
     <div className="datatable">
-      <div className="datatableTitle">
-        {judul}
-        <Link to="/users/new" className="link">
-          Tambah OPD
-        </Link>
-      </div>
       <DataGrid
         className="datagrid"
         rows={baris}

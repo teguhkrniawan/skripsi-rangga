@@ -49,10 +49,12 @@ const Sidebar = () => {
           {roles == 'user' ? (
             <>
               <p className="title">Layanan Kami</p>
-              <li>
-                <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                <span>EVIDEN SPBE</span>
-              </li>
+              <Link to="/eviden-spbe">
+                <li>
+                  <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                  <span>EVIDEN SPBE</span>
+                </li>
+              </Link>
               <li>
                 <PsychologyOutlinedIcon className="icon" />
                 <span>MANUAL BOOK</span>

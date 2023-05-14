@@ -13,6 +13,10 @@ import MasterOpd from "./pages/master-opd/masteropd";
 import MasterPic from "./pages/master-pic/masterpic";
 import MasterIndicator from "./pages/master-indikator/masterindicator";
 import MasterDokumen from "./pages/master-dokumen/masterdokumen";
+import Eviden from "./pages/eviden-spbe/Eviden";
+import TambahOpd from "./pages/master-opd/TambahOpd";
+import EditOpd from "./pages/master-opd/EditOpd";
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -33,6 +37,8 @@ function App() {
             {/* master opd */}
             <Route path="/opd">
               <Route index element={<MasterOpd />} />
+              <Route element={<TambahOpd />} path="add-item" />
+              <Route element={<EditOpd />} path="edit" />
             </Route>
 
             {/* master pic */}
@@ -48,6 +54,11 @@ function App() {
             {/* dokumen */}
             <Route path="/dokumen">
               <Route index element={<MasterDokumen />} />
+            </Route>
+
+            {/* eviden spbe */}
+            <Route path="/eviden-spbe">
+              <Route index element={<Eviden />} />
             </Route>
 
             {/* /users */}
