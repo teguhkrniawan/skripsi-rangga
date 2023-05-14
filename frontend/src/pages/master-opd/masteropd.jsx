@@ -13,30 +13,39 @@ const MasterOpd = () => {
 
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  
-    /**
-    * Handle when delete button click
-    */
-    const handleDelete = (id_opd) => {
-      Swal.fire({
-        title: 'Apakah kamu yakin?',
-        text: "Data yang dihapus tidak bisa dikembalikan lagi!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Tentu',
-        cancelButtonText: 'Batal'
-      }).then((result) => {
-        if (result.isConfirmed) {
+
+  /**
+  * Handle when delete button click
+  */
+  const handleDelete = (id_opd) => {
+    Swal.fire({
+      title: 'Apakah kamu yakin?',
+      text: "Data yang dihapus tidak bisa dikembalikan lagi!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Tentu',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.post(`http://localhost:8081/opd/delete`, {
+          id_opd: id_opd
+        }).then(response => {
           Swal.fire(
             'Deleted!',
-            'Your file has been deleted.',
+            'OPD Berhasil dihapus',
             'success'
-          )
-        }
-      })
-    };
+          ).then((result) => {
+            if(result.isConfirmed){
+              window.location.href = '/opd';
+            }
+          })
+        })
+      }
+    })
+  };
 
   const opdColumns = [
     {
