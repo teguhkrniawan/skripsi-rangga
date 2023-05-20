@@ -16,6 +16,8 @@ import MasterDokumen from "./pages/master-dokumen/masterdokumen";
 import Eviden from "./pages/eviden-spbe/Eviden";
 import TambahOpd from "./pages/master-opd/TambahOpd";
 import EditOpd from "./pages/master-opd/EditOpd";
+import TambahPic from "./pages/master-pic/TambahPic";
+import EditPic from "./pages/master-pic/EditPic";
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
             {/* master pic */}
             <Route path="/pic">
               <Route index element={<MasterPic />} />
+              <Route element={<TambahPic />} path="add-item" />
+              <Route element={<EditPic />} path="edit" />
             </Route>
 
             {/* indikator */}

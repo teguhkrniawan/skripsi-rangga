@@ -55,7 +55,8 @@ const MasterDokumen = () => {
 
   const getData = async () => {
     try {
-      axios.get(`http://localhost:8081/dokumen`).then(response => {
+      axios.get(`http://localhost:8081/dokumen/`).then(response => {
+        // console.log(response.data.data)
         const data = response.data.data.map((item, index) => ({ ...item, id: index + 1 }))
         setData(data)
         setIsLoading(false)

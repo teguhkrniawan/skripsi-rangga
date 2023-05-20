@@ -3,6 +3,13 @@ const UsersModel = require('../models/users');
 const getAllUsers = async (req, res) => {
     try {
         const [data] = await UsersModel.getAllUsers();
+        if(req.query.id_user){
+            const [data] = await UsersModel.getAllUsers(req.query.id_user)
+            return res.json({
+                message: 'GET all opd success',
+                data: data[0]
+            })
+        }
     
         res.json({
             message: 'GET all users success',
@@ -19,7 +26,7 @@ const getAllUsers = async (req, res) => {
 const createNewUser = async (req, res) => {
     const {body} = req;
 
-    if(!body.email || !body.name || !body.addres){
+    if(!body.nama_pic || !body.id_opd || !body.nip ||  !body.no_hp ||  !body.email ||  !body.password ||  !body.status_aktif){
         return res.status(400).json({
             message: 'Anda mengirimkan data yang salah',
             data: null,
@@ -41,14 +48,12 @@ const createNewUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const {idUser} = req.params;
     const {body} = req;
     try {
-        await UsersModel.updateUser(body, idUser);
+        await UsersModel.updateUser(body);
         res.json({
             message: 'UPDATE user success',
             data: {
-                id: idUser,
                 ...body
             },
         })
@@ -61,7 +66,7 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    const {idUser} = req.params;
+    const idUser = req.body.id_user;
     try {
         await UsersModel.deleteUser(idUser);
         res.json({

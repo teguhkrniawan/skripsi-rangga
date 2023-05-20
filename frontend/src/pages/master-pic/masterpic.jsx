@@ -56,7 +56,7 @@ const MasterPic = () => {
                             </Link>
                             <div
                                 className="deleteButton"
-                            // onClick={() => handleDelete(params.row._id)}
+                                onClick={() => handleDelete(params.row.id_pic)}
                             >
                                 Delete
                             </div>
@@ -66,6 +66,39 @@ const MasterPic = () => {
             },
         },
     ];
+
+    /**
+  * Handle when delete button click
+  */
+    const handleDelete = (id_user) => {
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: "Data yang dihapus tidak bisa dikembalikan lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tentu',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.post(`http://localhost:8081/users/delete`, {
+                    id_user: id_user
+                }).then(response => {
+                    Swal.fire(
+                        'Deleted!',
+                        'PIC Berhasil dihapus',
+                        'success'
+                    ).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/pic';
+                        }
+                    })
+                })
+            }
+        })
+    };
 
     const getData = async () => {
         try {
@@ -95,6 +128,12 @@ const MasterPic = () => {
             <Sidebar />
             <div className="listContainer">
                 <Navbar />
+                <div className="datatableTitle">
+                    Master PIC
+                    <Link to="/pic/add-item" className="link">
+                        Tambah PIC
+                    </Link>
+                </div>
                 <Datatable
                     kolom={opdColumns}
                     baris={data}

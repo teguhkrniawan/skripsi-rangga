@@ -1,28 +1,32 @@
 const dbPool = require('../config/database');
 
-const getAllUsers = () => {
-    const SQLQuery = 'SELECT * FROM tbl_pic JOIN tbl_opd ON tbl_opd.id_opd = tbl_pic.id_opd';
+const getAllUsers = (id_user) => {
+    let SQLQuery = `SELECT * FROM tbl_pic JOIN tbl_opd ON tbl_opd.id_opd = tbl_pic.id_opd`;
+
+    if(id_user){
+        SQLQuery += ` WHERE tbl_pic.id_pic = ${id_user}`
+    }
 
     return dbPool.execute(SQLQuery);
 }
 
 const createNewUser = (body) => {
-    const SQLQuery = `  INSERT INTO users (name, email, address) 
-                        VALUES ('${body.name}', '${body.email}', '${body.address}')`;
+    const SQLQuery = `  INSERT INTO tbl_pic (nama_pic, id_opd, nip, no_hp, email, password, status_aktif) 
+                        VALUES ('${body.nama_pic}', '${body.id_opd}', '${body.nip}', '${body.no_hp}', '${body.email}', '${body.password}', '${body.status_aktif}')`;
 
     return dbPool.execute(SQLQuery);
 }
 
-const updateUser = (body, idUser) => {
-    const SQLQuery = `  UPDATE users 
-                        SET name='${body.name}', email='${body.email}', address='${body.address}' 
-                        WHERE id=${idUser}`;
+const updateUser = (body) => {
+    const SQLQuery = `  UPDATE tbl_pic 
+                        SET nama_pic='${body.nama_pic}', id_opd='${body.id_opd}', nip='${body.nip}', no_hp='${body.no_hp}', email='${body.email}', status_aktif='${body.status_aktif}'
+                        WHERE id_pic=${body.id_pic}`;
 
     return dbPool.execute(SQLQuery);
 }
 
 const deleteUser = (idUser) => {
-    const SQLQuery = `DELETE FROM users WHERE id=${idUser}`;
+    const SQLQuery = `DELETE FROM tbl_pic WHERE id_pic=${idUser}`;
 
     return dbPool.execute(SQLQuery);
 }

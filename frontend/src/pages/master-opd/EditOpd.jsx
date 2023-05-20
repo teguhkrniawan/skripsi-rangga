@@ -85,7 +85,7 @@ const EditOpd = () => {
                             </div>
                         </div>
 
-                        <button type='submit' className='btn btn-sm btn-primary mt-3'>Simpan</button>
+                        <button type='submit' className='btn btn-sm btn-primary mt-3'>Simpan Perubahan</button>
                     </div>
                 </form>
             </div>
