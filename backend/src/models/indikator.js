@@ -1,7 +1,11 @@
 const dbPool = require('../config/database');
 
-const getAllIndikator = () => {
-    const SQLQuery = 'SELECT * FROM tbl_indikator';
+const getAllIndikator = (id_indikator) => {
+    let SQLQuery = 'SELECT * FROM tbl_indikator';
+
+    if(id_indikator){
+        SQLQuery = `SELECT * FROM tbl_indikator WHERE id_indikator = ${id_indikator}`
+    }
 
     return dbPool.execute(SQLQuery);
 }

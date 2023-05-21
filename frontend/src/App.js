@@ -18,6 +18,9 @@ import TambahOpd from "./pages/master-opd/TambahOpd";
 import EditOpd from "./pages/master-opd/EditOpd";
 import TambahPic from "./pages/master-pic/TambahPic";
 import EditPic from "./pages/master-pic/EditPic";
+import TambahIndikator from "./pages/master-indikator/TambahIndikator";
+import EditIndikator from "./pages/master-indikator/EditIndikator";
+import TambahDokumen from "./pages/master-dokumen/TambahDokumen";
 
 
 function App() {
@@ -53,11 +56,14 @@ function App() {
             {/* indikator */}
             <Route path="/indikator">
               <Route index element={<MasterIndicator />} />
+              <Route path="add-item" element={<TambahIndikator />} />
+              <Route path="edit" element={<EditIndikator />} />
             </Route>
 
             {/* dokumen */}
             <Route path="/dokumen">
               <Route index element={<MasterDokumen />} />
+              <Route element={<TambahDokumen /> } path="add-item"/>
             </Route>
 
             {/* eviden spbe */}

@@ -91,10 +91,10 @@ const Sidebar = () => {
                   <span>MASTER DOKUMEN</span>
                 </li>
               </Link>
-              <li>
+              {/* <li>
                 <LocalShippingIcon className="icon" />
                 <span>SETTINGS</span>
-              </li>
+              </li> */}
 
               <p className="title">Report</p>
               <li>
@@ -109,10 +109,10 @@ const Sidebar = () => {
           )}
 
           <p className="title">User</p>
-          <li>
+          {/* <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>PROFILE</span>
-          </li>
+          </li> */}
           <li onClick={handleLogout}>
             <ExitToAppIcon className="icon" />
             <span>LOGOUT</span>

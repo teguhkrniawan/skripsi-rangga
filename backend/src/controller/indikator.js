@@ -2,6 +2,17 @@ const IndikatorModel = require('../models/indikator');
 
 const getAllIndikator = async (req, res) => {
     try {
+
+        const id_indikator = req.query.id_indikator;
+
+        if (id_indikator) {
+            const [data] = await IndikatorModel.getAllIndikator(id_indikator);
+            return res.json({
+                message: 'GET all indikator sukses',
+                data: data[0]
+            })
+        }
+
         const [data] = await IndikatorModel.getAllIndikator();
     
         res.json({

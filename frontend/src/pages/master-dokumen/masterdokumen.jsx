@@ -42,7 +42,7 @@ const MasterDokumen = () => {
               </Link>
               <div
                 className="deleteButton"
-                // onClick={() => handleDelete(params.row._id)}
+              // onClick={() => handleDelete(params.row._id)}
               >
                 Delete
               </div>
@@ -82,7 +82,13 @@ const MasterDokumen = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable 
+        <div className="datatableTitle">
+          Master Dokumen
+          <Link to="/dokumen/add-item" className="link">
+            Tambah Dokumen
+          </Link>
+        </div>
+        <Datatable
           kolom={opdColumns}
           baris={data}
           judul="Master Dokumen"
