@@ -21,6 +21,7 @@ import EditPic from "./pages/master-pic/EditPic";
 import TambahIndikator from "./pages/master-indikator/TambahIndikator";
 import EditIndikator from "./pages/master-indikator/EditIndikator";
 import TambahDokumen from "./pages/master-dokumen/TambahDokumen";
+import EditDokumen from "./pages/master-dokumen/EditDokumen";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
             <Route path="/dokumen">
               <Route index element={<MasterDokumen />} />
               <Route element={<TambahDokumen /> } path="add-item"/>
+              <Route element={<EditDokumen /> } path="edit"/>
             </Route>
 
             {/* eviden spbe */}

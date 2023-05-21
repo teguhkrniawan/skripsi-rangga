@@ -3,6 +3,14 @@ const DokumenModel = require('../models/dokumen');
 const getAllDokumen = async (req, res) => {
     try {
         const [data] = await DokumenModel.getAllDokumen();
+
+        if(req.query.id){
+            const [data] = await DokumenModel.getAllDokumen();
+            res.json({
+                message: 'GET detail dokumen sukses',
+                data: data[0]
+            })
+        }
     
         res.json({
             message: 'GET all dokumen success',

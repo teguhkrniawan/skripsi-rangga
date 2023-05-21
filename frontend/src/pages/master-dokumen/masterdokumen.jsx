@@ -37,12 +37,12 @@ const MasterDokumen = () => {
         return (
           <>
             <div className="cellAction">
-              <Link to={`/dokumen/edit?=${params.row.id_dokumen}`} style={{ textDecoration: "none" }}>
+              <Link to={`/dokumen/edit?id=${params.row.id}`} style={{ textDecoration: "none" }}>
                 <div className="viewButton">Edit</div>
               </Link>
               <div
                 className="deleteButton"
-              // onClick={() => handleDelete(params.row._id)}
+                onClick={() => handleDelete(params.row.id)}
               >
                 Delete
               </div>
@@ -75,6 +75,39 @@ const MasterDokumen = () => {
       getData()
     }
   }, [isLoading])
+
+  /**
+* Handle when delete button click
+*/
+  const handleDelete = (id_dokumen) => {
+    Swal.fire({
+      title: 'Apakah kamu yakin?',
+      text: "Data yang dihapus tidak bisa dikembalikan lagi!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Tentu',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.post(`http://localhost:8081/dokumen/delete`, {
+          id_dokumen: id_dokumen
+        }).then(response => {
+          Swal.fire(
+            'Deleted!',
+            'Dokumen Berhasil dihapus',
+            'success'
+          ).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = '/dokumen';
+            }
+          })
+        })
+      }
+    })
+  };
 
 
   return (
