@@ -49,7 +49,7 @@ const Sidebar = () => {
           {roles == 'user' ? (
             <>
               <p className="title">Layanan Kami</p>
-              <Link to="/eviden-spbe">
+              <Link to="/eviden-spbe" style={{ textDecoration: "none" }}>
                 <li>
                   <SettingsSystemDaydreamOutlinedIcon className="icon" />
                   <span>EVIDEN SPBE</span>
@@ -100,10 +100,6 @@ const Sidebar = () => {
               <li>
                 <InsertChartIcon className="icon" />
                 <span>LAPORAN SPBE</span>
-              </li>
-              <li>
-                <NotificationsNoneIcon className="icon" />
-                <span>STATISTIK SPBE</span>
               </li>
             </>
           )}

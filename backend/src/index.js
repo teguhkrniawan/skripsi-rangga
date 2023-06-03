@@ -8,9 +8,10 @@ const opdRoutes = require('./routes/opd');
 const indikatorRoutes = require('./routes/indikator');
 const autentikasiRoutes = require('./routes/autentikasi');
 const dokumenRoutes = require('./routes/dokumen');
+const laporanRoutes = require('./routes/laporan');
 
 const middlewareLogRequest = require('./middleware/logs');
-const upload = require('./middleware/multer');
+// const upload = require('./middleware/multer');
 
 const app = express();
 
@@ -24,14 +25,14 @@ app.use('/opd', opdRoutes);
 app.use('/indikator', indikatorRoutes);
 app.use('/autentikasi', autentikasiRoutes);
 app.use('/dokumen', dokumenRoutes);
+app.use('/laporan', laporanRoutes);
 
-
-
-app.post('/upload',upload.single('photo'),(req, res) => {
-    res.json({
-        message: 'Upload berhasil'
-    })
-})
+// app.post('/upload-dokumen',upload.single('dokumen'),(req, res) => {
+//     const file = req.file
+//     res.status(200).json({
+//         file: file.filename
+//     })
+// })
 
 app.use((err, req, res, next) => {
     res.json({

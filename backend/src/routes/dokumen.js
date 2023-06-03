@@ -9,5 +9,7 @@ router.get('/', DokumenController.getAllDokumen);
 router.post('/add', DokumenController.insertDokumen);
 router.post('/update', DokumenController.updateDokumen);
 router.post('/delete', DokumenController.deleteDokumen);
+router.post('/upload', DokumenController.uploadDokumen);
+router.get('/mydokumen', DokumenController.getMyDokumen);
 
 module.exports = router;
