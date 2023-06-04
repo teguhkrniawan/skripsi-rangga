@@ -13,6 +13,7 @@ const Eviden = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [userId, setUserId] = useState(null);
+    const [opdId, setOpdId] = useState(null);
     const [dataModalAdd, setDataModalAdd] = useState(null);
     const [dataModalUpdate, setDataModalUpdate] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -43,9 +44,11 @@ const Eviden = () => {
 
                     // Mendapatkan nilai properti id_pic dari objek user
                     const { id_pic } = userObj;
+                    const { id_opd } = userObj;
 
                     // Mengupdate state userId dengan nilai id_pic
                     setUserId(id_pic);
+                    setOpdId(id_opd);
                 }
 
                 const response = await axios.get('http://localhost:8081/dokumen/');
@@ -100,7 +103,8 @@ const Eviden = () => {
                 "id_dokumen": dataModalAdd.id_dokumen,
                 "nama_file_dokumen": filename,
                 "tanggal_upload": "2023-06-03",
-                "id_pic": userId
+                "id_pic": userId,
+                "id_opd" : opdId
             })
             if (response2) {
                 window.location.href = '/eviden-spbe';

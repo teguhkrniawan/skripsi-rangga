@@ -6,5 +6,7 @@ const router = express.Router();
 
 // READ - GET
 router.post('/add', LaporanController.insertLaporan);
+router.get('/all', LaporanController.getAllLaporan);
+router.get('/byopd', LaporanController.getLaporanByOpd);
 
 module.exports = router;

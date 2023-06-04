@@ -22,6 +22,8 @@ import TambahIndikator from "./pages/master-indikator/TambahIndikator";
 import EditIndikator from "./pages/master-indikator/EditIndikator";
 import TambahDokumen from "./pages/master-dokumen/TambahDokumen";
 import EditDokumen from "./pages/master-dokumen/EditDokumen";
+import Laporan from "./pages/laporan-sbpe/LaporanSpbe";
+import DetailLaporanSpbe from "./pages/laporan-sbpe/DetailLaporanSpbe";
 
 
 function App() {
@@ -66,6 +68,12 @@ function App() {
               <Route index element={<MasterDokumen />} />
               <Route element={<TambahDokumen /> } path="add-item"/>
               <Route element={<EditDokumen /> } path="edit"/>
+            </Route>
+
+            {/* laporan-spbe */}
+            <Route path="/laporan-spbe">
+                <Route index element={<Laporan />} />
+                <Route element={<DetailLaporanSpbe />} path="detail" />
             </Route>
 
             {/* eviden spbe */}
