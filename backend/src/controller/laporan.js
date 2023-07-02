@@ -52,8 +52,13 @@ const getLaporanByOpd = async (req, res) => {
     }
 }
 
+const getExportLaporan = async (req, res) => {
+    console.log("running export")
+}
+
 module.exports = {
     insertLaporan,
     getAllLaporan,
-    getLaporanByOpd
+    getLaporanByOpd,
+    getExportLaporan
 }

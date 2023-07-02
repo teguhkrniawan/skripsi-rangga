@@ -19,12 +19,26 @@ const getAllLaporan = (req) => {
 }
 
 const getLaporanByOpd = (req) => {
-    const SQLQuery =  `SELECT * FROM tbl_laporan LEFT JOIN tbl_dokumen ON tbl_dokumen.id_dokumen = tbl_laporan.id_dokumen WHERE id_opd = '${req}'`;
+    const SQLQuery = `SELECT * FROM tbl_laporan LEFT JOIN tbl_dokumen ON tbl_dokumen.id_dokumen = tbl_laporan.id_dokumen WHERE id_opd = '${req}'`;
+    return dbPool.execute(SQLQuery);
+}
+
+const exportLaporan = (req) => {
+    const SQLQuery = `select id_opd , nama_opd,  
+    (select count(id_laporan) from tbl_laporan tl where id_opd = to2.id_opd) as jumlah_upload,
+    (select count(id_dokumen) from tbl_dokumen td) as jumlah_dokumen,
+    CASE
+        WHEN (SELECT COUNT(id_laporan) FROM tbl_laporan tl WHERE tl.id_opd = to2.id_opd) < (SELECT COUNT(id_dokumen) FROM tbl_dokumen td)
+        THEN 'belum lengkap'
+        ELSE 'lengkap'
+    END as status
+    from tbl_opd to2`;
     return dbPool.execute(SQLQuery);
 }
 
 module.exports = {
     insertLaporan,
     getAllLaporan,
-    getLaporanByOpd
+    getLaporanByOpd,
+    exportLaporan
 }
