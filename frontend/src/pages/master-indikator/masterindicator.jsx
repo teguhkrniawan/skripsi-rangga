@@ -102,6 +102,17 @@ const MasterIndicator = () => {
               window.location.href = '/indikator';
             }
           })
+        }).catch(error => {
+          if (error.response && error.response.status === 500) {
+            Swal.fire(
+              'Perhatian!',
+              'Akses di Tolak, Data Terkait Dengan Laporan Yang Telah di Inputkan',
+              'warning'
+            )
+          } else {
+            // Tangani error lainnya
+            console.log('Terjadi kesalahan:', error);
+          }
         })
       }
     })

@@ -30,6 +30,94 @@ const Sidebar = () => {
   // Mengambil nilai dari properti roles
   const roles = user.roles
 
+  let sidebar;
+
+  if (roles == 'user') {
+    sidebar = <>
+      <p className="title">Main</p>
+      <Link to="/dashboard-opd" style={{ textDecoration: "none" }}>
+        <li>
+          <DashboardIcon className="icon" />
+          <span>BERANDA</span>
+        </li>
+      </Link>
+
+      <p className="title">Layanan Kami</p>
+      <Link to="/eviden-spbe" style={{ textDecoration: "none" }}>
+        <li>
+          <SettingsSystemDaydreamOutlinedIcon className="icon" />
+          <span>EVIDEN SPBE</span>
+        </li>
+      </Link>
+      <Link to="/manualbook" style={{ textDecoration: "none" }}>
+        <li>
+          <PsychologyOutlinedIcon className="icon" />
+          <span>MANUAL BOOK</span>
+        </li>
+      </Link>
+      <Link to="/helpdesk" style={{ textDecoration: "none" }}>
+        <li>
+          <SettingsApplicationsIcon className="icon" />
+          <span>HELP DESK</span>
+        </li>
+      </Link>
+    </>
+  }
+
+  if (roles == 'admin') {
+    sidebar = <>
+      <p className="title">Master Page</p>
+      <Link to="/opd" style={{ textDecoration: "none" }}>
+        <li>
+          <PersonOutlineIcon className="icon" />
+          <span>MASTER OPD</span>
+        </li>
+      </Link>
+      <Link to="/pic" style={{ textDecoration: "none" }}>
+        <li>
+          <LocalShippingIcon className="icon" />
+          <span>MASTER PIC</span>
+        </li>
+      </Link>
+      <Link to="/indikator" style={{ textDecoration: "none" }}>
+        <li>
+          <StoreIcon className="icon" />
+          <span>MASTER INDIKATOR</span>
+        </li>
+      </Link>
+      <Link to="/dokumen" style={{ textDecoration: "none" }}>
+        <li>
+          <CreditCardIcon className="icon" />
+          <span>MASTER DOKUMEN</span>
+        </li>
+      </Link>
+      {/* <li>
+      <LocalShippingIcon className="icon" />
+      <span>SETTINGS</span>
+    </li> */}
+
+      <p className="title">Report</p>
+      <Link to="/laporan-spbe" style={{ textDecoration: "none" }}>
+        <li>
+          <InsertChartIcon className="icon" />
+          <span>LAPORAN SPBE</span>
+        </li>
+      </Link>
+    </>
+  }
+
+  if (roles == 'kadis') {
+    sidebar = <>
+      <p className="title">Report</p>
+      <Link to="/laporan-spbe" style={{ textDecoration: "none" }}>
+        <li>
+          <InsertChartIcon className="icon" />
+          <span>LAPORAN SPBE</span>
+        </li>
+      </Link>
+    </>
+  }
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -40,71 +128,13 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">Main</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>BERANDA</span>
-          </li>
 
-          {roles == 'user' ? (
-            <>
-              <p className="title">Layanan Kami</p>
-              <Link to="/eviden-spbe" style={{ textDecoration: "none" }}>
-                <li>
-                  <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                  <span>EVIDEN SPBE</span>
-                </li>
-              </Link>
-              <li>
-                <PsychologyOutlinedIcon className="icon" />
-                <span>MANUAL BOOK</span>
-              </li>
-              <li>
-                <SettingsApplicationsIcon className="icon" />
-                <span>HELP DESK</span>
-              </li>
-            </>
-          ) : (
-            <>
-              <p className="title">Master Page</p>
-              <Link to="/opd" style={{ textDecoration: "none" }}>
-                <li>
-                  <PersonOutlineIcon className="icon" />
-                  <span>MASTER OPD</span>
-                </li>
-              </Link>
-              <Link to="/pic" style={{ textDecoration: "none" }}>
-                <li>
-                  <LocalShippingIcon className="icon" />
-                  <span>MASTER PIC</span>
-                </li>
-              </Link>
-              <Link to="/indikator" style={{ textDecoration: "none" }}>
-                <li>
-                  <StoreIcon className="icon" />
-                  <span>MASTER INDIKATOR</span>
-                </li>
-              </Link>
-              <Link to="/dokumen" style={{ textDecoration: "none" }}>
-                <li>
-                  <CreditCardIcon className="icon" />
-                  <span>MASTER DOKUMEN</span>
-                </li>
-              </Link>
-              {/* <li>
-                <LocalShippingIcon className="icon" />
-                <span>SETTINGS</span>
-              </li> */}
+          {
+            sidebar
+          }
 
-              <p className="title">Report</p>
-              <Link to="/laporan-spbe" style={{ textDecoration: "none" }}>
-                <li>
-                  <InsertChartIcon className="icon" />
-                  <span>LAPORAN SPBE</span>
-                </li>
-              </Link>
-            </>
-          )}
+
+
 
           <p className="title">User</p>
           {/* <li>
@@ -116,7 +146,7 @@ const Sidebar = () => {
             <span>LOGOUT</span>
           </li>
         </ul>
-      </div>
+      </div >
       {/* <div className="bottom">
         <div
           className="colorOption"
@@ -127,7 +157,7 @@ const Sidebar = () => {
           onClick={() => dispatch({ type: "DARK" })}
         ></div>
       </div> */}
-    </div>
+    </div >
   );
 };
 

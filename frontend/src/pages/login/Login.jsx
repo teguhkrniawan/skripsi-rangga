@@ -20,8 +20,9 @@ const Login = () => {
         localStorage.setItem('user', JSON.stringify(response.data.data));
         if(response.data.data.roles === 'user'){
           window.location.href = '/dashboard-opd';
+          return
         }
-        window.location.href = '/home';
+        window.location.href = '/dashboard-opd';
 
       } catch (error) {
         // console.error("Handle Submit Error : ", )

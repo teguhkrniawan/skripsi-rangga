@@ -96,6 +96,18 @@ const MasterPic = () => {
                         }
                     })
                 })
+                    .catch(error => {
+                        if (error.response && error.response.status !== 200) {
+                            Swal.fire(
+                                'Perhatian!',
+                                'Akses di Tolak, Data Terkait Dengan Laporan Yang Telah di Inputkan',
+                                'warning'
+                            )
+                        } else {
+                            // Tangani error lainnya
+                            console.log('Terjadi kesalahan:', error);
+                        }
+                    })
             }
         })
     };

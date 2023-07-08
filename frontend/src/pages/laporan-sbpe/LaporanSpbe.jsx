@@ -51,6 +51,10 @@ const LaporanSpbe = () => {
                 <div className="container">
                     <h6 className="mt-3 mb-3">Laporan SPBE</h6>
 
+                    <Link to='/laporan-spbe/cetak'>
+                        <button className="btn btn-success">Cetak Laporan</button>
+                    </Link>
+
                     <table className="table">
                         <thead>
                             <tr>

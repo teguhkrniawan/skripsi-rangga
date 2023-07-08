@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  width: 100%;
+}
+.list .listContainer {
+  flex: 6;
+}
+.list .listContainer .datatableTitle {
+  padding-left: 30px;
+  padding-top: 30px;
+  width: 100%;
+  font-size: 24px;
+  color: gray;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list .listContainer .datatableTitle .link {
+  text-decoration: none;
+  margin-right: 60px;
+  color: green;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid green;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}/*# sourceMappingURL=list.css.map */

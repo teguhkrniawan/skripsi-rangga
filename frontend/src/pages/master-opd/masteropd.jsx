@@ -33,6 +33,17 @@ const MasterOpd = () => {
         axios.post(`http://localhost:8081/opd/delete`, {
           id_opd: id_opd
         }).then(response => {
+
+          console.log(response)
+
+          if(response.data.message == 'Something went wrong'){
+            Swal.fire(
+              'Perhatian!',
+              'Akses di Tolak, Data Terkait Dengan Laporan Yang Telah di Inputkan',
+              'warning'
+            )
+          }
+
           Swal.fire(
             'Deleted!',
             'OPD Berhasil dihapus',
@@ -42,6 +53,17 @@ const MasterOpd = () => {
               window.location.href = '/opd';
             }
           })
+        }).catch(error => {
+          if (error.response && error.response.status !== 500) {
+            Swal.fire(
+              'Perhatian!',
+              'Akses di Tolak, Data Terkait Dengan Laporan Yang Telah di Inputkan',
+              'warning'
+            )
+          } else {
+            // Tangani error lainnya
+            console.log('Terjadi kesalahan:', error);
+          }
         })
       }
     })
