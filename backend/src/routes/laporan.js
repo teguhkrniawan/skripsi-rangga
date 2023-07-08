@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/add', LaporanController.insertLaporan);
 router.get('/all', LaporanController.getAllLaporan);
 router.get('/byopd', LaporanController.getLaporanByOpd);
-router.get('/export', LaporanController.getExportLaporan)
+router.get('/export', LaporanController.getExportLaporan);
+router.get('/export2', LaporanController.getLaporanBelum);
 
 module.exports = router;

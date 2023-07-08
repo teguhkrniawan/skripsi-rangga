@@ -1,7 +1,7 @@
 const dbPool = require('../config/database');
 
 const getAllUsers = (id_user) => {
-    let SQLQuery = `SELECT * FROM tbl_pic JOIN tbl_opd ON tbl_opd.id_opd = tbl_pic.id_opd`;
+    let SQLQuery = `SELECT * FROM tbl_pic JOIN tbl_opd ON tbl_opd.id_opd = tbl_pic.id_opd WHERE roles = 'user'`;
 
     if(id_user){
         SQLQuery += ` WHERE tbl_pic.id_pic = ${id_user}`

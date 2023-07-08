@@ -1,6 +1,9 @@
 const dbPool = require('../config/database');
 
 const getAllDokumen = (id_dokumen) => {
+
+    console.log(id_dokumen)
+
     let SQLQuery = 'SELECT id_dokumen, nama_dokumen, a.deskripsi, nama_indikator, b.id_indikator FROM tbl_dokumen AS a JOIN tbl_indikator AS b ON a.id_indikator = b.id_indikator';
 
     if (id_dokumen) {

@@ -7,7 +7,7 @@ const getAllDokumen = async (req, res) => {
         const [data] = await DokumenModel.getAllDokumen();
 
         if (req.query.id) {
-            const [data] = await DokumenModel.getAllDokumen();
+            const [data] = await DokumenModel.getAllDokumen(req.query.id);
             res.json({
                 message: 'GET detail dokumen sukses',
                 data: data[0]

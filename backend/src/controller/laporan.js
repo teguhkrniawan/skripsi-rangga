@@ -53,12 +53,39 @@ const getLaporanByOpd = async (req, res) => {
 }
 
 const getExportLaporan = async (req, res) => {
-    console.log("running export")
+    try {
+        const [data] = await LaporanModel.exportLaporan()
+        res.json({
+            message: "Berhasil get data dokumen opd",
+            data: data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error
+        })
+    }
+}
+
+const getLaporanBelum = async (req, res) => {
+    try {
+        const [data] = await LaporanModel.getLaporanBelumLengkap()
+        res.json({
+            message: "Berhasil get data dokumen opd",
+            data: data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error
+        })
+    }
 }
 
 module.exports = {
     insertLaporan,
     getAllLaporan,
     getLaporanByOpd,
-    getExportLaporan
+    getExportLaporan,
+    getLaporanBelum
 }
