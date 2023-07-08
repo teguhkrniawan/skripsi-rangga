@@ -24,6 +24,9 @@ import TambahDokumen from "./pages/master-dokumen/TambahDokumen";
 import EditDokumen from "./pages/master-dokumen/EditDokumen";
 import Laporan from "./pages/laporan-sbpe/LaporanSpbe";
 import DetailLaporanSpbe from "./pages/laporan-sbpe/DetailLaporanSpbe";
+import ManualBook from "./pages/manual-book/ManualBook";
+import Helpdesk from "./pages/helpdesk/Helpdesk";
+import PrintPdf from "./pages/cetak/PrintPdf";
 
 
 function App() {
@@ -74,6 +77,7 @@ function App() {
             <Route path="/laporan-spbe">
                 <Route index element={<Laporan />} />
                 <Route element={<DetailLaporanSpbe />} path="detail" />
+                <Route element={<PrintPdf />}  path="cetak"/>
             </Route>
 
             {/* eviden spbe */}
@@ -104,6 +108,16 @@ function App() {
             {/* /dashboard */}
             <Route path="dashboard">
               <Route index element={<HomeOpd />} />
+            </Route>
+
+            {/* manual book */}
+            <Route path="manualbook">
+              <Route index element={<ManualBook />} />
+            </Route>
+
+            {/* Helpdesk */}
+            <Route path="helpdesk">
+              <Route index element={<Helpdesk />} />
             </Route>
 
           </Route>

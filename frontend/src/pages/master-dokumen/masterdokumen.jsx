@@ -17,7 +17,13 @@ const MasterDokumen = () => {
     {
       field: "id",
       headerName: "NO",
-      width: 20
+      width: 20,
+    },
+    {
+      field: "id_dokumen",
+      headerName: "NOK",
+      width: 20,
+      hide: true
     },
     {
       field: "nama_dokumen",
@@ -37,12 +43,12 @@ const MasterDokumen = () => {
         return (
           <>
             <div className="cellAction">
-              <Link to={`/dokumen/edit?id=${params.row.id}`} style={{ textDecoration: "none" }}>
+              <Link to={`/dokumen/edit?id=${params.row.id_dokumen}`} style={{ textDecoration: "none" }}>
                 <div className="viewButton">Edit</div>
               </Link>
               <div
                 className="deleteButton"
-                onClick={() => handleDelete(params.row.id)}
+                onClick={() => handleDelete(params.row.id_dokumen)}
               >
                 Delete
               </div>
@@ -95,6 +101,19 @@ const MasterDokumen = () => {
         axios.post(`http://localhost:8081/dokumen/delete`, {
           id_dokumen: id_dokumen
         }).then(response => {
+
+          if (response.status != '200') {
+            Swal.fire(
+              'Deleted!',
+              'Dokumen Tidak Berhasil di Hapus Karena Data Ini Berelasi dengan Laporan Yang Sudah di Input',
+              'success'
+            ).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = '/dokumen';
+              }
+            })
+          }
+
           Swal.fire(
             'Deleted!',
             'Dokumen Berhasil dihapus',
@@ -104,6 +123,17 @@ const MasterDokumen = () => {
               window.location.href = '/dokumen';
             }
           })
+        }).catch(error => {
+          if (error.response && error.response.status === 500) {
+            Swal.fire(
+              'Perhatian!',
+              'Akses di Tolak, Data Terkait Dengan Laporan Yang Telah di Inputkan',
+              'warning'
+            )
+          } else {
+            // Tangani error lainnya
+            console.log('Terjadi kesalahan:', error);
+          }
         })
       }
     })
